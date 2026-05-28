@@ -1,0 +1,21 @@
+
+@media(max-width:768px){
+
+  .title{
+    font-size:3.5rem;
+  }
+
+  .section-title,
+  .closing-title{
+    font-size:2.2rem;
+  }
+
+  .countdown-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .gallery-grid{
+    grid-template-columns:1fr;
+  }
+
+}
