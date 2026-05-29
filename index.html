@@ -95,6 +95,7 @@
       </div>
 
       <div class="hero-body">
+        <!-- Monogram seal -->
         <div class="hero-seal fade-up fd-1" aria-hidden="true">
           <span class="seal-ring"></span>
           <span class="seal-inner" id="heroInitial"></span>
@@ -115,9 +116,13 @@
 
         <p class="hero-tagline fade-up fd-6" id="heroTagline"></p>
 
+        <!-- Meta card -->
         <div class="hero-meta fade-up fd-7">
-          <p class="hero-date" id="heroDate"></p>
-          <p class="hero-time" id="heroTime"></p>
+          <div class="hero-meta-inner">
+            <p class="hero-date" id="heroDate"></p>
+            <div class="hero-meta-rule" aria-hidden="true"></div>
+            <p class="hero-time" id="heroTime"></p>
+          </div>
         </div>
 
         <a class="hero-scroll-cta fade-up fd-8" href="#countdown" aria-label="Scroll to countdown">
@@ -170,8 +175,19 @@
           <span class="sec-ornline" aria-hidden="true"></span>
         </div>
 
+        <!-- Date & Time card -->
         <div class="dc reveal rd-1">
-          <div class="dc-icon-wrap" aria-hidden="true"><span class="dc-icon">🗓</span></div>
+          <div class="dc-accent-bar" aria-hidden="true"></div>
+          <div class="dc-icon-wrap" aria-hidden="true">
+            <svg class="dc-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2.5" y="3.5" width="15" height="14" rx="2.5" stroke="#c8a46a" stroke-width="1.2"/>
+              <path d="M2.5 7.5h15" stroke="#c8a46a" stroke-width="1.2"/>
+              <path d="M6.5 1.5v4M13.5 1.5v4" stroke="#c8a46a" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="7" cy="12" r="1" fill="#c8a46a"/>
+              <circle cx="10" cy="12" r="1" fill="#c8a46a"/>
+              <circle cx="13" cy="12" r="1" fill="#c8a46a"/>
+            </svg>
+          </div>
           <div class="dc-content">
             <p class="dc-label">Tanggal &amp; Waktu</p>
             <p class="dc-primary" id="detailDate"></p>
@@ -180,8 +196,15 @@
           </div>
         </div>
 
+        <!-- Venue card -->
         <div class="dc reveal rd-2">
-          <div class="dc-icon-wrap" aria-hidden="true"><span class="dc-icon">📍</span></div>
+          <div class="dc-accent-bar" aria-hidden="true"></div>
+          <div class="dc-icon-wrap" aria-hidden="true">
+            <svg class="dc-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 2C7.24 2 5 4.24 5 7c0 4.25 5 11 5 11s5-6.75 5-11c0-2.76-2.24-5-5-5z" stroke="#c8a46a" stroke-width="1.2" stroke-linejoin="round"/>
+              <circle cx="10" cy="7" r="2" stroke="#c8a46a" stroke-width="1.2"/>
+            </svg>
+          </div>
           <div class="dc-content">
             <p class="dc-label">Venue</p>
             <p class="dc-primary" id="detailVenue"></p>
@@ -189,8 +212,15 @@
           </div>
         </div>
 
+        <!-- Dress code card -->
         <div class="dc reveal rd-3">
-          <div class="dc-icon-wrap" aria-hidden="true"><span class="dc-icon">✨</span></div>
+          <div class="dc-accent-bar" aria-hidden="true"></div>
+          <div class="dc-icon-wrap" aria-hidden="true">
+            <svg class="dc-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 2l-4 4 3 1-1 11h10l-1-11 3-1-4-4" stroke="#c8a46a" stroke-width="1.2" stroke-linejoin="round"/>
+              <path d="M7 2c0 1.66 1.34 3 3 3s3-1.34 3-3" stroke="#c8a46a" stroke-width="1.2" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <div class="dc-content">
             <p class="dc-label">Dress Code</p>
             <p class="dc-primary" id="detailDress"></p>
@@ -235,6 +265,7 @@
       <div class="rsvp-atmosphere" aria-hidden="true">
         <div class="ra-orb ra-1"></div>
         <div class="ra-orb ra-2"></div>
+        <div class="ra-orb ra-3"></div>
         <div class="ra-grain"></div>
       </div>
       <div class="sec-inner">
@@ -243,6 +274,13 @@
           <h2 class="sec-title">Konfirmasi Kehadiran</h2>
           <span class="sec-ornline" aria-hidden="true"></span>
         </div>
+
+        <div class="rsvp-ornament reveal" aria-hidden="true">
+          <span class="orn-line"></span>
+          <span class="orn-diamond">✦</span>
+          <span class="orn-line"></span>
+        </div>
+
         <p class="rsvp-line reveal">
           Mohon konfirmasi kehadiranmu<br>sebelum&nbsp;<strong id="rsvpDeadline"></strong>.
         </p>
