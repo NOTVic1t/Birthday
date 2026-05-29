@@ -3,159 +3,301 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#f4c6d0" />
+  <meta name="theme-color" content="#1a0f1e" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
   <title>You're Invited 🌸</title>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+KR:wght@200;300;400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=EB+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="locked">
 
-  <!-- ░░ LOADER ░░ -->
-  <div id="loader" aria-hidden="true">
-    <div class="loader-petal"></div>
-    <div class="loader-petal"></div>
-    <div class="loader-petal"></div>
+  <!-- ░░░ CINEMATIC OPENING GATE ░░░ -->
+  <div id="gate" class="gate" role="dialog" aria-label="Invitation opening screen" aria-modal="true">
+
+    <!-- Layered atmospheric background -->
+    <div class="gate-bg" aria-hidden="true">
+      <div class="gate-gradient"></div>
+      <div class="gate-vignette"></div>
+      <div class="gate-grain"></div>
+      <!-- Floating orbs -->
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <!-- Decorative lines -->
+      <div class="gate-line gl-h1"></div>
+      <div class="gate-line gl-h2"></div>
+      <div class="gate-line gl-v1"></div>
+      <div class="gate-line gl-v2"></div>
+    </div>
+
+    <!-- Gate composition -->
+    <div class="gate-content">
+      <!-- Top ornament -->
+      <div class="gate-ornament" aria-hidden="true">
+        <span class="orn-line"></span>
+        <span class="orn-diamond">✦</span>
+        <span class="orn-line"></span>
+      </div>
+
+      <!-- Greeting -->
+      <p class="gate-eyebrow">A personal invitation for</p>
+      <h2 class="gate-guest" id="gateGuest">Dear Guest</h2>
+
+      <!-- Divider -->
+      <div class="gate-rule" aria-hidden="true"></div>
+
+      <!-- Centered name composition -->
+      <p class="gate-presents">cordially presents</p>
+      <p class="gate-occasion">the birthday celebration of</p>
+      <h1 class="gate-name" id="gateName"></h1>
+      <p class="gate-age-line"><em>turning</em> <span id="gateAge"></span></p>
+
+      <!-- Bottom ornament -->
+      <div class="gate-ornament gate-ornament--bottom" aria-hidden="true">
+        <span class="orn-line"></span>
+        <span class="orn-diamond">✦</span>
+        <span class="orn-line"></span>
+      </div>
+
+      <!-- CTA -->
+      <button class="gate-btn" id="gateBtn" aria-label="Open invitation">
+        <span class="gate-btn-text">Buka Undangan</span>
+        <span class="gate-btn-icon" aria-hidden="true">↓</span>
+        <span class="gate-btn-ring" aria-hidden="true"></span>
+      </button>
+
+      <p class="gate-hint" aria-hidden="true">sentuh untuk membuka</p>
+    </div>
+
+    <!-- Corner ornaments -->
+    <div class="corner corner-tl" aria-hidden="true"></div>
+    <div class="corner corner-tr" aria-hidden="true"></div>
+    <div class="corner corner-bl" aria-hidden="true"></div>
+    <div class="corner corner-br" aria-hidden="true"></div>
   </div>
 
-  <!-- ░░ MUSIC TOGGLE ░░ -->
-  <button class="music-btn" id="musicBtn" aria-label="Toggle music" title="Toggle ambient music">
-    <span class="music-icon" id="musicIcon">♩</span>
+  <!-- ░░░ MUSIC CONTROL ░░░ -->
+  <button class="music-btn" id="musicBtn" aria-label="Toggle ambient music" hidden>
+    <span class="music-vinyl" id="musicVinyl" aria-hidden="true"></span>
     <audio id="bgMusic" loop></audio>
   </button>
 
-  <!-- ░░ HERO ░░ -->
-  <section class="hero" id="hero">
-    <div class="hero-bg">
-      <div class="petal petal-1"></div>
-      <div class="petal petal-2"></div>
-      <div class="petal petal-3"></div>
-      <div class="petal petal-4"></div>
-      <div class="petal petal-5"></div>
-      <div class="bokeh b1"></div>
-      <div class="bokeh b2"></div>
-      <div class="bokeh b3"></div>
-    </div>
+  <!-- ░░░ MAIN INVITATION ░░░ -->
+  <main id="main" class="main" aria-hidden="true">
 
-    <div class="hero-content reveal">
-      <p class="greeting-label" id="guestGreeting">Dear Guest,</p>
-      <p class="hero-sub">you are warmly invited to celebrate the</p>
-      <h1 class="hero-name" id="birthdayName"></h1>
-      <p class="hero-age"><span id="birthdayAge"></span><sup>th</sup> birthday</p>
-      <p class="hero-tagline" id="heroTagline"></p>
-      <div class="hero-divider">
-        <span></span><span class="diamond">✦</span><span></span>
+    <!-- ── HERO ── -->
+    <section class="hero" id="hero">
+      <div class="hero-canvas" aria-hidden="true">
+        <!-- Ambient light -->
+        <div class="hl hl-top"></div>
+        <div class="hl hl-mid"></div>
+        <div class="hl hl-bot"></div>
+        <!-- Petals -->
+        <div class="fp fp-1"></div>
+        <div class="fp fp-2"></div>
+        <div class="fp fp-3"></div>
+        <div class="fp fp-4"></div>
+        <div class="fp fp-5"></div>
+        <div class="fp fp-6"></div>
       </div>
-      <p class="hero-date" id="heroDate"></p>
-      <p class="hero-time" id="heroTime"></p>
-      <a class="hero-cta" href="#countdown">See Details</a>
-    </div>
 
-    <div class="scroll-hint" aria-hidden="true">
-      <span></span>
-    </div>
-  </section>
+      <div class="hero-body">
+        <!-- Monogram / seal -->
+        <div class="hero-seal fade-up fd-1" aria-hidden="true">
+          <span class="seal-ring"></span>
+          <span class="seal-inner" id="heroInitial"></span>
+        </div>
 
-  <!-- ░░ COUNTDOWN ░░ -->
-  <section class="section countdown-section" id="countdown">
-    <div class="section-inner reveal">
-      <p class="section-label">The celebration begins in</p>
-      <div class="countdown-grid">
-        <div class="cd-box"><span class="cd-num" id="cdDays">00</span><span class="cd-unit">Days</span></div>
-        <div class="cd-sep">·</div>
-        <div class="cd-box"><span class="cd-num" id="cdHours">00</span><span class="cd-unit">Hours</span></div>
-        <div class="cd-sep">·</div>
-        <div class="cd-box"><span class="cd-num" id="cdMins">00</span><span class="cd-unit">Mins</span></div>
-        <div class="cd-sep">·</div>
-        <div class="cd-box"><span class="cd-num" id="cdSecs">00</span><span class="cd-unit">Secs</span></div>
+        <p class="hero-invite-line fade-up fd-2">you are warmly invited to celebrate</p>
+
+        <h1 class="hero-name fade-up fd-3" id="heroName"></h1>
+
+        <p class="hero-age-badge fade-up fd-4">
+          <span id="heroAge"></span><sup>th</sup>&thinsp;Birthday
+        </p>
+
+        <div class="hero-sep fade-up fd-5" aria-hidden="true">
+          <span class="sep-stem"></span>
+          <span class="sep-gem">✦</span>
+          <span class="sep-stem"></span>
+        </div>
+
+        <p class="hero-tagline fade-up fd-6" id="heroTagline"></p>
+
+        <div class="hero-meta fade-up fd-7">
+          <p class="hero-date" id="heroDate"></p>
+          <p class="hero-time" id="heroTime"></p>
+        </div>
+
+        <a class="hero-scroll-cta fade-up fd-8" href="#countdown" aria-label="Scroll to countdown">
+          <span>Lihat Detail</span>
+          <span class="cta-arrow" aria-hidden="true">↓</span>
+        </a>
       </div>
-    </div>
-  </section>
 
-  <!-- ░░ DETAILS ░░ -->
-  <section class="section details-section" id="details">
-    <div class="section-inner">
-      <h2 class="section-title reveal">Event Details</h2>
+      <!-- Scroll indicator -->
+      <div class="scroll-trail" aria-hidden="true">
+        <span class="st-dot"></span>
+        <span class="st-dot"></span>
+        <span class="st-dot"></span>
+      </div>
+    </section>
 
-      <div class="detail-card reveal">
-        <div class="detail-icon">🗓</div>
-        <div class="detail-body">
-          <p class="detail-label">Date &amp; Time</p>
-          <p class="detail-value" id="detailDate"></p>
-          <p class="detail-sub" id="detailTime"></p>
-          <p class="detail-sub doors-hint">Doors open at <span id="detailDoors"></span></p>
+    <!-- ── COUNTDOWN ── -->
+    <section class="section cd-section" id="countdown">
+      <div class="sec-inner">
+        <p class="sec-eyebrow reveal">The celebration begins in</p>
+        <div class="cd-row">
+          <div class="cd-cell reveal rd-1">
+            <span class="cd-digits" id="cdDays">00</span>
+            <span class="cd-label">Hari</span>
+          </div>
+          <div class="cd-dot reveal rd-2" aria-hidden="true">:</div>
+          <div class="cd-cell reveal rd-2">
+            <span class="cd-digits" id="cdHours">00</span>
+            <span class="cd-label">Jam</span>
+          </div>
+          <div class="cd-dot reveal rd-3" aria-hidden="true">:</div>
+          <div class="cd-cell reveal rd-3">
+            <span class="cd-digits" id="cdMins">00</span>
+            <span class="cd-label">Menit</span>
+          </div>
+          <div class="cd-dot reveal rd-4" aria-hidden="true">:</div>
+          <div class="cd-cell reveal rd-4">
+            <span class="cd-digits" id="cdSecs">00</span>
+            <span class="cd-label">Detik</span>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="detail-card reveal">
-        <div class="detail-icon">📍</div>
-        <div class="detail-body">
-          <p class="detail-label">Venue</p>
-          <p class="detail-value" id="detailVenue"></p>
-          <p class="detail-sub" id="detailAddress"></p>
+    <!-- ── DETAILS ── -->
+    <section class="section detail-section" id="details">
+      <div class="sec-inner">
+        <div class="sec-head reveal">
+          <span class="sec-ornline" aria-hidden="true"></span>
+          <h2 class="sec-title">Informasi Acara</h2>
+          <span class="sec-ornline" aria-hidden="true"></span>
+        </div>
+
+        <div class="dc reveal rd-1">
+          <div class="dc-icon-wrap" aria-hidden="true">
+            <span class="dc-icon">🗓</span>
+          </div>
+          <div class="dc-content">
+            <p class="dc-label">Tanggal &amp; Waktu</p>
+            <p class="dc-primary" id="detailDate"></p>
+            <p class="dc-secondary" id="detailTime"></p>
+            <p class="dc-note">Pintu dibuka pukul <span id="detailDoors"></span></p>
+          </div>
+        </div>
+
+        <div class="dc reveal rd-2">
+          <div class="dc-icon-wrap" aria-hidden="true">
+            <span class="dc-icon">📍</span>
+          </div>
+          <div class="dc-content">
+            <p class="dc-label">Venue</p>
+            <p class="dc-primary" id="detailVenue"></p>
+            <p class="dc-secondary" id="detailAddress"></p>
+          </div>
+        </div>
+
+        <div class="dc reveal rd-3">
+          <div class="dc-icon-wrap" aria-hidden="true">
+            <span class="dc-icon">✨</span>
+          </div>
+          <div class="dc-content">
+            <p class="dc-label">Dress Code</p>
+            <p class="dc-primary" id="detailDress"></p>
+            <p class="dc-secondary">Hadir dengan penampilan terbaikmu</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="detail-card reveal">
-        <div class="detail-icon">✨</div>
-        <div class="detail-body">
-          <p class="detail-label">Dress Code</p>
-          <p class="detail-value" id="detailDress"></p>
+    <!-- ── GALLERY ── -->
+    <section class="section gallery-section" id="gallery">
+      <div class="sec-inner">
+        <div class="sec-head reveal">
+          <span class="sec-ornline" aria-hidden="true"></span>
+          <h2 class="sec-title">Kenangan</h2>
+          <span class="sec-ornline" aria-hidden="true"></span>
         </div>
       </div>
-    </div>
-  </section>
+      <div class="gallery-track reveal" id="galleryStrip" role="list"></div>
+      <div class="gallery-dots" id="galleryDots" aria-hidden="true"></div>
+    </section>
 
-  <!-- ░░ GALLERY ░░ -->
-  <section class="section gallery-section" id="gallery">
-    <div class="section-inner">
-      <h2 class="section-title reveal">Moments</h2>
-      <div class="gallery-strip" id="galleryStrip"></div>
-    </div>
-  </section>
-
-  <!-- ░░ MAP ░░ -->
-  <section class="section map-section" id="map">
-    <div class="section-inner">
-      <h2 class="section-title reveal">Find Us</h2>
-      <div class="map-wrapper reveal">
-        <iframe
-          id="mapFrame"
-          title="Venue location"
-          allowfullscreen
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+    <!-- ── MAP ── -->
+    <section class="section map-section" id="map">
+      <div class="sec-inner">
+        <div class="sec-head reveal">
+          <span class="sec-ornline" aria-hidden="true"></span>
+          <h2 class="sec-title">Lokasi</h2>
+          <span class="sec-ornline" aria-hidden="true"></span>
+        </div>
+        <div class="map-frame reveal">
+          <iframe
+            id="mapFrame"
+            title="Lokasi venue"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <a class="btn-ghost reveal" id="mapsLink" target="_blank" rel="noopener">
+          Buka di Google Maps
+          <span aria-hidden="true">↗</span>
+        </a>
       </div>
-      <a class="btn-outline" id="mapsLink" target="_blank" rel="noopener">Open in Google Maps ↗</a>
-    </div>
-  </section>
+    </section>
 
-  <!-- ░░ RSVP ░░ -->
-  <section class="section rsvp-section" id="rsvp">
-    <div class="rsvp-bg" aria-hidden="true">
-      <div class="rsvp-petal rp1"></div>
-      <div class="rsvp-petal rp2"></div>
-    </div>
-    <div class="section-inner">
-      <h2 class="section-title reveal">RSVP</h2>
-      <p class="rsvp-body reveal">Please confirm your attendance by <strong id="rsvpDeadline"></strong>.</p>
-      <p class="rsvp-body reveal">We'd love to have you with us.</p>
-      <a class="btn-rsvp reveal" id="rsvpBtn" target="_blank" rel="noopener">
-        <span>Confirm via WhatsApp</span>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L0 24l6.335-1.508A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.804 9.804 0 01-5.003-1.368l-.36-.214-3.757.894.951-3.659-.234-.374A9.774 9.774 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
-      </a>
-    </div>
-  </section>
+    <!-- ── RSVP ── -->
+    <section class="section rsvp-section" id="rsvp">
+      <div class="rsvp-atmosphere" aria-hidden="true">
+        <div class="ra-orb ra-1"></div>
+        <div class="ra-orb ra-2"></div>
+        <div class="ra-grain"></div>
+      </div>
+      <div class="sec-inner">
+        <div class="sec-head reveal">
+          <span class="sec-ornline" aria-hidden="true"></span>
+          <h2 class="sec-title">Konfirmasi Kehadiran</h2>
+          <span class="sec-ornline" aria-hidden="true"></span>
+        </div>
+        <p class="rsvp-line reveal">
+          Mohon konfirmasi kehadiranmu<br>sebelum&nbsp;<strong id="rsvpDeadline"></strong>.
+        </p>
+        <p class="rsvp-subline reveal">Kami sangat menantikan kehadiranmu&nbsp;🌸</p>
+        <a class="btn-wa reveal" id="rsvpBtn" target="_blank" rel="noopener">
+          <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L0 24l6.335-1.508A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.804 9.804 0 01-5.003-1.368l-.36-.214-3.757.894.951-3.659-.234-.374A9.774 9.774 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+          </svg>
+          <span>Konfirmasi via WhatsApp</span>
+        </a>
+      </div>
+    </section>
 
-  <!-- ░░ FOOTER ░░ -->
-  <footer class="site-footer">
-    <p>Made with <span aria-label="love">🌸</span> for <span id="footerName"></span></p>
-  </footer>
+    <!-- ── FOOTER ── -->
+    <footer class="site-footer">
+      <div class="footer-orn" aria-hidden="true">
+        <span class="orn-line"></span>
+        <span class="orn-diamond">✦</span>
+        <span class="orn-line"></span>
+      </div>
+      <p class="footer-text">
+        Dibuat dengan cinta untuk&nbsp;<span id="footerName"></span>
+      </p>
+      <p class="footer-sub">🌸</p>
+    </footer>
+
+  </main><!-- /#main -->
 
   <script src="config.js"></script>
   <script src="script.js"></script>
