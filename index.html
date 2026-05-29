@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#f4c6d0" />
+  <title>You're Invited 🌸</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+KR:wght@200;300;400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ░░ LOADER ░░ -->
+  <div id="loader" aria-hidden="true">
+    <div class="loader-petal"></div>
+    <div class="loader-petal"></div>
+    <div class="loader-petal"></div>
+  </div>
+
+  <!-- ░░ MUSIC TOGGLE ░░ -->
+  <button class="music-btn" id="musicBtn" aria-label="Toggle music" title="Toggle ambient music">
+    <span class="music-icon" id="musicIcon">♩</span>
+    <audio id="bgMusic" loop></audio>
+  </button>
+
+  <!-- ░░ HERO ░░ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="petal petal-1"></div>
+      <div class="petal petal-2"></div>
+      <div class="petal petal-3"></div>
+      <div class="petal petal-4"></div>
+      <div class="petal petal-5"></div>
+      <div class="bokeh b1"></div>
+      <div class="bokeh b2"></div>
+      <div class="bokeh b3"></div>
+    </div>
+
+    <div class="hero-content reveal">
+      <p class="greeting-label" id="guestGreeting">Dear Guest,</p>
+      <p class="hero-sub">you are warmly invited to celebrate the</p>
+      <h1 class="hero-name" id="birthdayName"></h1>
+      <p class="hero-age"><span id="birthdayAge"></span><sup>th</sup> birthday</p>
+      <p class="hero-tagline" id="heroTagline"></p>
+      <div class="hero-divider">
+        <span></span><span class="diamond">✦</span><span></span>
+      </div>
+      <p class="hero-date" id="heroDate"></p>
+      <p class="hero-time" id="heroTime"></p>
+      <a class="hero-cta" href="#countdown">See Details</a>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- ░░ COUNTDOWN ░░ -->
+  <section class="section countdown-section" id="countdown">
+    <div class="section-inner reveal">
+      <p class="section-label">The celebration begins in</p>
+      <div class="countdown-grid">
+        <div class="cd-box"><span class="cd-num" id="cdDays">00</span><span class="cd-unit">Days</span></div>
+        <div class="cd-sep">·</div>
+        <div class="cd-box"><span class="cd-num" id="cdHours">00</span><span class="cd-unit">Hours</span></div>
+        <div class="cd-sep">·</div>
+        <div class="cd-box"><span class="cd-num" id="cdMins">00</span><span class="cd-unit">Mins</span></div>
+        <div class="cd-sep">·</div>
+        <div class="cd-box"><span class="cd-num" id="cdSecs">00</span><span class="cd-unit">Secs</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ DETAILS ░░ -->
+  <section class="section details-section" id="details">
+    <div class="section-inner">
+      <h2 class="section-title reveal">Event Details</h2>
+
+      <div class="detail-card reveal">
+        <div class="detail-icon">🗓</div>
+        <div class="detail-body">
+          <p class="detail-label">Date &amp; Time</p>
+          <p class="detail-value" id="detailDate"></p>
+          <p class="detail-sub" id="detailTime"></p>
+          <p class="detail-sub doors-hint">Doors open at <span id="detailDoors"></span></p>
+        </div>
+      </div>
+
+      <div class="detail-card reveal">
+        <div class="detail-icon">📍</div>
+        <div class="detail-body">
+          <p class="detail-label">Venue</p>
+          <p class="detail-value" id="detailVenue"></p>
+          <p class="detail-sub" id="detailAddress"></p>
+        </div>
+      </div>
+
+      <div class="detail-card reveal">
+        <div class="detail-icon">✨</div>
+        <div class="detail-body">
+          <p class="detail-label">Dress Code</p>
+          <p class="detail-value" id="detailDress"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ GALLERY ░░ -->
+  <section class="section gallery-section" id="gallery">
+    <div class="section-inner">
+      <h2 class="section-title reveal">Moments</h2>
+      <div class="gallery-strip" id="galleryStrip"></div>
+    </div>
+  </section>
+
+  <!-- ░░ MAP ░░ -->
+  <section class="section map-section" id="map">
+    <div class="section-inner">
+      <h2 class="section-title reveal">Find Us</h2>
+      <div class="map-wrapper reveal">
+        <iframe
+          id="mapFrame"
+          title="Venue location"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <a class="btn-outline" id="mapsLink" target="_blank" rel="noopener">Open in Google Maps ↗</a>
+    </div>
+  </section>
+
+  <!-- ░░ RSVP ░░ -->
+  <section class="section rsvp-section" id="rsvp">
+    <div class="rsvp-bg" aria-hidden="true">
+      <div class="rsvp-petal rp1"></div>
+      <div class="rsvp-petal rp2"></div>
+    </div>
+    <div class="section-inner">
+      <h2 class="section-title reveal">RSVP</h2>
+      <p class="rsvp-body reveal">Please confirm your attendance by <strong id="rsvpDeadline"></strong>.</p>
+      <p class="rsvp-body reveal">We'd love to have you with us.</p>
+      <a class="btn-rsvp reveal" id="rsvpBtn" target="_blank" rel="noopener">
+        <span>Confirm via WhatsApp</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L0 24l6.335-1.508A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.804 9.804 0 01-5.003-1.368l-.36-.214-3.757.894.951-3.659-.234-.374A9.774 9.774 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer class="site-footer">
+    <p>Made with <span aria-label="love">🌸</span> for <span id="footerName"></span></p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
