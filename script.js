@@ -1,5 +1,6 @@
 /* ═══════════════════════════════════════════════════════════
-   LUXURY BIRTHDAY INVITATION — SCRIPT v2 PREMIUM
+   LUXURY BIRTHDAY INVITATION — SCRIPT ELITE POLISH
+   Premium motion · Cinematic reveal · Refined interactions
    ═══════════════════════════════════════════════════════════ */
 
 (function () {
@@ -28,7 +29,6 @@
   function populateContent() {
     const c     = CONFIG;
     const guest = getGuestName();
-    const guestLabel = guest ? guest : 'Dear Guest';
 
     // Gate
     $('gateGuest').textContent = guest ? guest : 'Dear Guest';
@@ -76,24 +76,24 @@
 
   /* ── GALLERY ── */
   function buildGallery() {
-    const track = $('galleryStrip');
+    const track  = $('galleryStrip');
     const dotsEl = $('galleryDots');
     const images = CONFIG.gallery || [];
     if (!track || !images.length) return;
 
     images.forEach((url, i) => {
-      // Item
       const item = document.createElement('div');
       item.className = 'gal-item';
       item.setAttribute('role', 'listitem');
+
       const img = document.createElement('img');
       img.src     = url;
       img.alt     = `Foto kenangan ${i + 1}`;
       img.loading = 'lazy';
+      img.decoding = 'async';
       item.appendChild(img);
       track.appendChild(item);
 
-      // Dot
       if (dotsEl) {
         const dot = document.createElement('span');
         dot.className = i === 0 ? 'gdot active' : 'gdot';
@@ -101,11 +101,11 @@
       }
     });
 
-    // Update active dot on scroll
+    // Active dot on scroll — smooth IntersectionObserver
     if (dotsEl && images.length > 1) {
-      const dots = dotsEl.querySelectorAll('.gdot');
+      const dots  = dotsEl.querySelectorAll('.gdot');
       const items = track.querySelectorAll('.gal-item');
-      const observer = new IntersectionObserver(entries => {
+      const io = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const idx = Array.from(items).indexOf(entry.target);
@@ -113,7 +113,7 @@
           }
         });
       }, { root: track, threshold: 0.55 });
-      items.forEach(item => observer.observe(item));
+      items.forEach(item => io.observe(item));
     }
   }
 
@@ -127,7 +127,7 @@
       secs:  $('cdSecs'),
     };
 
-    // Micro-tick animation on seconds digit
+    // Elegant micro-tick on change
     function tick(el, val) {
       if (!el || el.textContent === val) return;
       el.classList.add('tick');
@@ -158,7 +158,7 @@
     setInterval(update, 1000);
   }
 
-  /* ── SCROLL REVEAL ── */
+  /* ── SCROLL REVEAL — Cinematic stagger ── */
   function initReveal() {
     const allReveal = document.querySelectorAll('.reveal, .fade-up');
     if (!allReveal.length) return;
@@ -170,7 +170,7 @@
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
 
     allReveal.forEach(el => io.observe(el));
   }
@@ -194,37 +194,59 @@
           playing = true;
           btn.classList.add('playing');
           btn.setAttribute('aria-label', 'Pause ambient music');
-        }).catch(() => {
-          // Browser blocked — silent fail
-        });
+        }).catch(() => {});
       }
     });
   }
 
-  /* ── GATE (OPENING SCREEN) ── */
+  /* ── GATE — Premium cinematic opening ── */
   function initGate() {
-    const gate    = $('gate');
-    const gateBtn = $('gateBtn');
-    const main    = $('main');
-    const musicBtn= $('musicBtn');
-    const audio   = $('bgMusic');
+    const gate     = $('gate');
+    const gateBtn  = $('gateBtn');
+    const main     = $('main');
+    const musicBtn = $('musicBtn');
+    const audio    = $('bgMusic');
 
     if (!gate || !gateBtn || !main) return;
 
-    // Lock body scroll
     document.body.classList.add('locked');
 
+    // Ripple effect on button press
+    gateBtn.addEventListener('pointerdown', e => {
+      const rect = gateBtn.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      const size = Math.max(rect.width, rect.height) * 2;
+      ripple.style.cssText = `
+        position:absolute;border-radius:50%;
+        width:${size}px;height:${size}px;
+        left:${e.clientX - rect.left - size/2}px;
+        top:${e.clientY - rect.top - size/2}px;
+        background:rgba(239,189,202,0.15);
+        transform:scale(0);
+        animation:rippleOut 0.6s ease-out forwards;
+        pointer-events:none;
+      `;
+      gateBtn.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 700);
+    });
+
+    // Inject ripple keyframe once
+    if (!document.getElementById('rippleStyle')) {
+      const s = document.createElement('style');
+      s.id = 'rippleStyle';
+      s.textContent = '@keyframes rippleOut{to{transform:scale(1);opacity:0;}}';
+      document.head.appendChild(s);
+    }
+
     gateBtn.addEventListener('click', openInvitation);
-    // Also allow tapping anywhere on gate
     gate.addEventListener('click', e => {
       if (e.target === gate || e.target.closest('.gate-content')) openInvitation();
     });
 
     function openInvitation() {
-      // Prevent double-fire
       if (gate.classList.contains('exiting')) return;
 
-      // Start music on interaction (browser permits)
+      // Attempt music autoplay on user gesture
       if (audio && CONFIG.music && CONFIG.music.url) {
         audio.play().then(() => {
           if (musicBtn) {
@@ -234,30 +256,45 @@
         }).catch(() => {});
       }
 
-      // Cinematic exit
       gate.classList.add('exiting');
       document.body.classList.remove('locked');
 
-      // Reveal main
       main.removeAttribute('aria-hidden');
+
+      // Staggered reveal — hero first, then observe rest
       setTimeout(() => {
         main.classList.add('revealed');
-        initReveal();        // start observing now content is visible
+        // Immediately reveal hero elements
+        document.querySelectorAll('.hero .fade-up').forEach(el => {
+          el.classList.add('in');
+        });
+        // Then init observer for remaining sections
+        setTimeout(initReveal, 100);
         startCountdown();
-      }, 200);
+      }, 180);
 
-      // Show music button
       if (musicBtn) {
         musicBtn.removeAttribute('hidden');
-        setTimeout(() => musicBtn.classList.add('visible'), 500);
+        setTimeout(() => musicBtn.classList.add('visible'), 600);
       }
 
-      // Remove gate from DOM after animation
       gate.addEventListener('animationend', () => {
         gate.classList.add('gone');
         gate.setAttribute('aria-hidden', 'true');
       }, { once: true });
     }
+  }
+
+  /* ── SMOOTH SCROLL for anchor links ── */
+  function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
   }
 
   /* ── INIT ── */
@@ -266,8 +303,7 @@
     buildGallery();
     initGate();
     initMusic();
-    // Countdown starts after gate opens
-    // Reveal starts after gate opens
+    initSmoothScroll();
   }
 
   if (document.readyState === 'loading') {

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#1a0f1e" />
+  <meta name="theme-color" content="#180d1c" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <title>You're Invited 🌸</title>
 
@@ -18,52 +18,44 @@
   <!-- ░░░ CINEMATIC OPENING GATE ░░░ -->
   <div id="gate" class="gate" role="dialog" aria-label="Invitation opening screen" aria-modal="true">
 
-    <!-- Layered atmospheric background -->
     <div class="gate-bg" aria-hidden="true">
       <div class="gate-gradient"></div>
+      <div class="gate-haze"></div>
       <div class="gate-vignette"></div>
       <div class="gate-grain"></div>
-      <!-- Floating orbs -->
       <div class="orb orb-1"></div>
       <div class="orb orb-2"></div>
       <div class="orb orb-3"></div>
-      <!-- Decorative lines -->
+      <div class="orb orb-4"></div>
       <div class="gate-line gl-h1"></div>
       <div class="gate-line gl-h2"></div>
       <div class="gate-line gl-v1"></div>
       <div class="gate-line gl-v2"></div>
     </div>
 
-    <!-- Gate composition -->
     <div class="gate-content">
-      <!-- Top ornament -->
       <div class="gate-ornament" aria-hidden="true">
         <span class="orn-line"></span>
         <span class="orn-diamond">✦</span>
         <span class="orn-line"></span>
       </div>
 
-      <!-- Greeting -->
       <p class="gate-eyebrow">A personal invitation for</p>
       <h2 class="gate-guest" id="gateGuest">Dear Guest</h2>
 
-      <!-- Divider -->
       <div class="gate-rule" aria-hidden="true"></div>
 
-      <!-- Centered name composition -->
       <p class="gate-presents">cordially presents</p>
       <p class="gate-occasion">the birthday celebration of</p>
       <h1 class="gate-name" id="gateName"></h1>
       <p class="gate-age-line"><em>turning</em> <span id="gateAge"></span></p>
 
-      <!-- Bottom ornament -->
       <div class="gate-ornament gate-ornament--bottom" aria-hidden="true">
         <span class="orn-line"></span>
         <span class="orn-diamond">✦</span>
         <span class="orn-line"></span>
       </div>
 
-      <!-- CTA -->
       <button class="gate-btn" id="gateBtn" aria-label="Open invitation">
         <span class="gate-btn-text">Buka Undangan</span>
         <span class="gate-btn-icon" aria-hidden="true">↓</span>
@@ -73,7 +65,6 @@
       <p class="gate-hint" aria-hidden="true">sentuh untuk membuka</p>
     </div>
 
-    <!-- Corner ornaments -->
     <div class="corner corner-tl" aria-hidden="true"></div>
     <div class="corner corner-tr" aria-hidden="true"></div>
     <div class="corner corner-bl" aria-hidden="true"></div>
@@ -92,11 +83,9 @@
     <!-- ── HERO ── -->
     <section class="hero" id="hero">
       <div class="hero-canvas" aria-hidden="true">
-        <!-- Ambient light -->
         <div class="hl hl-top"></div>
         <div class="hl hl-mid"></div>
         <div class="hl hl-bot"></div>
-        <!-- Petals -->
         <div class="fp fp-1"></div>
         <div class="fp fp-2"></div>
         <div class="fp fp-3"></div>
@@ -106,14 +95,12 @@
       </div>
 
       <div class="hero-body">
-        <!-- Monogram / seal -->
         <div class="hero-seal fade-up fd-1" aria-hidden="true">
           <span class="seal-ring"></span>
           <span class="seal-inner" id="heroInitial"></span>
         </div>
 
         <p class="hero-invite-line fade-up fd-2">you are warmly invited to celebrate</p>
-
         <h1 class="hero-name fade-up fd-3" id="heroName"></h1>
 
         <p class="hero-age-badge fade-up fd-4">
@@ -139,7 +126,6 @@
         </a>
       </div>
 
-      <!-- Scroll indicator -->
       <div class="scroll-trail" aria-hidden="true">
         <span class="st-dot"></span>
         <span class="st-dot"></span>
@@ -185,9 +171,7 @@
         </div>
 
         <div class="dc reveal rd-1">
-          <div class="dc-icon-wrap" aria-hidden="true">
-            <span class="dc-icon">🗓</span>
-          </div>
+          <div class="dc-icon-wrap" aria-hidden="true"><span class="dc-icon">🗓</span></div>
           <div class="dc-content">
             <p class="dc-label">Tanggal &amp; Waktu</p>
             <p class="dc-primary" id="detailDate"></p>
@@ -197,9 +181,7 @@
         </div>
 
         <div class="dc reveal rd-2">
-          <div class="dc-icon-wrap" aria-hidden="true">
-            <span class="dc-icon">📍</span>
-          </div>
+          <div class="dc-icon-wrap" aria-hidden="true"><span class="dc-icon">📍</span></div>
           <div class="dc-content">
             <p class="dc-label">Venue</p>
             <p class="dc-primary" id="detailVenue"></p>
@@ -208,9 +190,7 @@
         </div>
 
         <div class="dc reveal rd-3">
-          <div class="dc-icon-wrap" aria-hidden="true">
-            <span class="dc-icon">✨</span>
-          </div>
+          <div class="dc-icon-wrap" aria-hidden="true"><span class="dc-icon">✨</span></div>
           <div class="dc-content">
             <p class="dc-label">Dress Code</p>
             <p class="dc-primary" id="detailDress"></p>
@@ -242,17 +222,10 @@
           <span class="sec-ornline" aria-hidden="true"></span>
         </div>
         <div class="map-frame reveal">
-          <iframe
-            id="mapFrame"
-            title="Lokasi venue"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+          <iframe id="mapFrame" title="Lokasi venue" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <a class="btn-ghost reveal" id="mapsLink" target="_blank" rel="noopener">
-          Buka di Google Maps
-          <span aria-hidden="true">↗</span>
+          Buka di Google Maps <span aria-hidden="true">↗</span>
         </a>
       </div>
     </section>
@@ -291,13 +264,11 @@
         <span class="orn-diamond">✦</span>
         <span class="orn-line"></span>
       </div>
-      <p class="footer-text">
-        Dibuat dengan cinta untuk&nbsp;<span id="footerName"></span>
-      </p>
+      <p class="footer-text">Dibuat dengan cinta untuk&nbsp;<span id="footerName"></span></p>
       <p class="footer-sub">🌸</p>
     </footer>
 
-  </main><!-- /#main -->
+  </main>
 
   <script src="config.js"></script>
   <script src="script.js"></script>
